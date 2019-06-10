@@ -39,7 +39,7 @@ var p = document.getElementById("periont");
 var k = document.getElementById("kerningt");
 var li = document.getElementById("litht");
 var nau = document.getElementById("naut");
-var sl = document.getElementById("sleept");
+var sl = document.getElementById("sleepyt");
 
 
 function aud() {
@@ -133,7 +133,7 @@ function checkLetters(letter) {
     if (lineWords) {
         for (var i = 0; i < blanks; i++) {
             if (randomWord[i] == letter) {
-                lines[i] == letter;
+                lines[i] = letter;
             }
         }
     }
@@ -150,8 +150,8 @@ function complete() {
 
     if (lettersofWord.toString() == lines.toString()) {
         wins++;
-        reset();
         aud();
+        reset();
         document.getElementById("image").src = "./assets/images/grats.gif"
         document.getElementById("wins").innerHTML = " " + wins;
     }
@@ -170,16 +170,19 @@ function complete() {
 
 Game()
 //use string.fromCharCode()
+
 document.onkeyup = function (event) {
     var guess = String.fromCharCode(event.keyCode).toLowerCase();
     checkLetters(guess);
     complete();
     console.log(guess);
-    document.getElementById("current").innerHTML = "  " + lines.join(" ");
+    
     document.getElementById("pguess").innerHTML = "  " + wrongGuess.join(" ");
 }
 
 
+// unable to the correct letters to show on blank lines
+// unable to stop remaining guesses from going down after every guess
 
 
 
